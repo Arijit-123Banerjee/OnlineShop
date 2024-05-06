@@ -35,10 +35,10 @@ const Details = () => {
         <div className="overflow-hidden">
           <img src={image} alt="Shoe" />
         </div>
-        <div className="font-work-sans space-y-2 z-10 ">
+        <div className="font-work-sans space-y-2 z-10 max-md:pl-4  ">
           <p className="text-blue-500">Running Shoes</p>
-          <h1 className="text-5xl font-bold">{name}</h1>
-          <p className="w-80">{description}</p>
+          <h1 className="text-5xl font-bold max-md:text-4xl">{name}</h1>
+          <p className="w-80 max-md:text-sm max-md:w-72 ">{description}</p>
           <p className="text-xl text-green-500 font-bold">
             {price}{" "}
             <span className="text-gray-500 font-normal text-lg">
@@ -47,7 +47,7 @@ const Details = () => {
           </p>
 
           <button
-            className="p-2 border-2 w-full hover:bg-gray-300 duration-150"
+            className="p-2 border-2 w-full max-md:w-[70%] hover:bg-gray-300 duration-150"
             onClick={handleAddToCart}
             disabled={alreadyAdded}
           >

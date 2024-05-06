@@ -15,7 +15,7 @@ const Header = () => {
   };
   return (
     <>
-      <nav className="bg-white border-gray-200 py-2.5 ">
+      <nav className="bg-white border-gray-200 py-2.5 max-md: pl-4 ">
         <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto">
           <NavLink to={"/"} className="flex items-center">
             <img src={LOGO} className="h-6 mr-3 sm:h-9" alt="Landwind Logo" />

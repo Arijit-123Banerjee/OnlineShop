@@ -6,10 +6,13 @@ const AirProX4 = () => {
   return (
     <div className="flex items-center justify-center max-md:flex-col min-h-screen mb-20 overflow-hidden">
       <img src={airProX3IMG} />
-      <div className="font-work-sans text-gray-800 space-y-4">
-        <h2 className="text-3xl font-bold"> Limited Stock Available!</h2>
-        <h1 className="text-7xl font-bold">AirPro X2</h1>
-        <p className="w-96">
+      <div className="font-work-sans text-gray-800 space-y-4 max-md:text-center max-md:flex max-md:flex-col">
+        <h2 className="text-3xl font-bold max-md:text-2xl">
+          {" "}
+          Limited Stock Available!
+        </h2>
+        <h1 className="text-7xl font-bold max-md:text-6xl">AirPro X2</h1>
+        <p className="w-96 max-md:w-80">
           Consectetur adipiscing elit elit tellus, luctus nec ullamcorper
           mattis, pulvinar dapibus leo.​ Lorem ipsum dolor sit amet, consectetur
           adipiscing elit.

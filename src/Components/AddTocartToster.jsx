@@ -12,7 +12,7 @@ const AddToCartToaster = ({ isAdded, setIsAdded }) => {
   const notify = () => {
     toast.success("Item Added", {
       position: "top-right",
-      autoClose: 3000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: false,
@@ -27,7 +27,7 @@ const AddToCartToaster = ({ isAdded, setIsAdded }) => {
   return (
     <ToastContainer
       position="top-right"
-      autoClose={5000}
+      autoClose={2000}
       hideProgressBar={false}
       newestOnTop={false}
       closeOnClick

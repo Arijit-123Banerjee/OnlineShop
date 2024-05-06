@@ -24,7 +24,7 @@ const AirProX4 = () => {
           </span>
         </p>
         <NavLink
-          to={"/"}
+          to={"/shop"}
           className="z-10 shadow-2xl shadow-gray-600 p-3  w-60 rounded-full self-center flex justify-center items-center gap-2 hover:bg-stone-700 duration-300 hover:text-white "
         >
           <span></span>

@@ -4,8 +4,13 @@ import { Link, useParams } from "react-router-dom";
 import EMPTYCART from "../assets/EmptyCart.jpg";
 
 const CartPage = () => {
-  const { cartItems, setCartItems, setCartCount } = useContext(shoesContext);
-  const [calculateCartSum, setCalculateSum] = useState();
+  const {
+    cartItems,
+    setCartItems,
+    setCartCount,
+    calculateCartSum,
+    setCalculateSum,
+  } = useContext(shoesContext);
   const [selectedValue, setSelectedValue] = useState("01");
 
   const calculateSum = () => {
@@ -133,9 +138,11 @@ const CartPage = () => {
                   <span>Total cost</span>
                   <span className="text-green-500 font-bold">{`$ ${calculateCartSum}`}</span>
                 </div>
-                <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
-                  Checkout
-                </button>
+                <Link to={"/checkout"}>
+                  <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
+                    Checkout
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

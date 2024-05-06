@@ -9,6 +9,7 @@ import { shoesContext } from "../src/Context/ShoeContext";
 import { SHOES_DATA } from "../src/DATA";
 import Details from "./Pages/Details";
 import CartPage from "./Pages/CartPage";
+import CheckOutFrom from "./Pages/CheckOutFrom";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { path: "/contact", element: <Contact /> },
       { path: "/:id", element: <Details /> },
       { path: "/cart", element: <CartPage /> },
+      { path: "/checkout", element: <CheckOutFrom /> },
     ],
   },
 ]);
@@ -29,6 +31,7 @@ const App = () => {
   const [data, setData] = useState(SHOES_DATA);
   const [cartCount, setCartCount] = useState(0);
   const [cartItems, setCartItems] = useState([]);
+  const [calculateCartSum, setCalculateSum] = useState(0);
 
   const contextValue = {
     dataitem: data,
@@ -36,6 +39,8 @@ const App = () => {
     setCartCount: setCartCount,
     cartItems: cartItems,
     setCartItems: setCartItems,
+    calculateCartSum: calculateCartSum,
+    setCalculateSum: setCalculateSum,
   };
 
   return (

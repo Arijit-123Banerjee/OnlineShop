@@ -8,7 +8,6 @@ const Details = () => {
   const { dataitem } = useContext(shoesContext);
   const { setCartCount } = useContext(shoesContext);
   const { cartCount } = useContext(shoesContext);
-  const { cartItems } = useContext(shoesContext);
   const { setCartItems } = useContext(shoesContext);
   const { id } = useParams();
   const selectedShoe = dataitem.find((shoe) => shoe.id === parseInt(id));
@@ -40,7 +39,7 @@ const Details = () => {
           <h1 className="text-5xl font-bold max-md:text-4xl">{name}</h1>
           <p className="w-80 max-md:text-sm max-md:w-72 ">{description}</p>
           <p className="text-xl text-green-500 font-bold">
-            {price}{" "}
+            {`$ ${price}`}
             <span className="text-gray-500 font-normal text-lg">
               + Free Shipping
             </span>

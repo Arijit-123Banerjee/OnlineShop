@@ -21,8 +21,6 @@ const Header = () => {
             <img src={LOGO} className="h-6 mr-3 sm:h-9" alt="Landwind Logo" />
           </NavLink>
           <div className="flex items-center lg:order-2 gap-3">
-            <h1 className="font-bold text-blue-500 ">$0.00</h1>
-
             <NavLink
               to={"/cart"}
               type="button"

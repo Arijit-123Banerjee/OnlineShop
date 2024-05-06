@@ -54,7 +54,7 @@ const Crousel = () => {
               <div className="text-center text-black font-work-sans">
                 <p>{items.brand}</p>
                 <p className="font-bold">{items.name}</p>
-                <p className="text-green-600 font-bold">{items.price}</p>
+                <p className="text-green-600 font-bold">{`$ ${items.price}`}</p>
               </div>
             </div>
           </div>

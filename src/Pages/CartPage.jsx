@@ -1,14 +1,53 @@
 import React, { useContext, useEffect, useState } from "react";
 import { shoesContext } from "../Context/ShoeContext";
+import { Link, useParams } from "react-router-dom";
+import EMPTYCART from "../assets/EmptyCart.jpg";
 
 const CartPage = () => {
-  const { cartItems } = useContext(shoesContext);
+  const { cartItems, setCartItems, setCartCount } = useContext(shoesContext);
   const [calculateCartSum, setCalculateSum] = useState();
+  const [selectedValue, setSelectedValue] = useState("01");
+
+  const calculateSum = () => {
+    let sum = 0;
+    cartItems.forEach((item) => {
+      sum += Math.abs(Number(item.price));
+    });
+
+    if (selectedValue === "02") {
+      sum *= 2;
+    } else if (selectedValue === "03") {
+      sum *= 3;
+    }
+
+    setCalculateSum(sum);
+  };
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+
+  const handleRemoveItem = (id) => {
+    const filteredCartItems = cartItems.filter((item) => item.id !== id);
+    setCartItems(filteredCartItems);
+    setCartCount((previous) => previous - 1);
+  };
+
+  useEffect(() => {
+    calculateSum();
+  }, [cartItems, selectedValue]); // Include selectedValue in the dependency array
 
   return (
     <>
       {cartItems.length < 1 ? (
-        "No cart items"
+        <div className="h-screen w-full flex flex-col justify-center items-center">
+          <p className="text-2xl tracking-widest">No item Added</p>
+          <img
+            src={EMPTYCART}
+            alt="emptyCartIMG"
+            className="size-80 max-md:size-60"
+          />
+        </div>
       ) : (
         <div className="container mx-auto mt-10">
           <div className="sm:flex shadow-md my-10">
@@ -38,6 +77,8 @@ const CartPage = () => {
                         {item.name}
                       </p>
                       <select
+                        value={selectedValue}
+                        onChange={handleChange}
                         aria-label="Select quantity"
                         className="py-2 px-1 border border-gray-200 mr-6 focus:outline-none"
                       >
@@ -54,14 +95,12 @@ const CartPage = () => {
                     </p>
 
                     <div className="flex items-center justify-between pt-5">
-                      <div className="flex itemms-center">
-                        <p className="text-xs leading-3 underline text-gray-800 cursor-pointer">
-                          Add to favorites
-                        </p>
-                        <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
-                          Remove
-                        </p>
-                      </div>
+                      <button
+                        onClick={() => handleRemoveItem(item.id)}
+                        className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
+                      >
+                        Remove
+                      </button>
                       <p className="text-base font-black leading-none text-gray-800">
                         {item.price}
                       </p>
@@ -80,29 +119,21 @@ const CartPage = () => {
                 >
                   <path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" />
                 </svg>
-                Continue Shopping
+                <Link to={"/shop"}> Continue Shopping</Link>
               </a>
             </div>
 
-            {/* Summery------------------------------------ */}
-
-            <div id="summary" class=" w-full sm:w-1/4 md:w-1/2 px-8 py-10">
-              <h1 class="font-semibold text-2xl border-b pb-8">
+            {/* Summary Section */}
+            <div className="w-full sm:w-1/4 md:w-1/2 px-8 py-10" id="summary">
+              <h1 className="font-semibold text-2xl border-b pb-8">
                 Order Summary
               </h1>
-              <div class="flex justify-between mt-10 mb-5">
-                <span class="font-semibold text-sm uppercase">
-                  Items {cartItems.length}
-                </span>
-                <span class="font-semibold text-sm">590$</span>
-              </div>
-
-              <div class="border-t mt-8">
-                <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+              <div className="border-t mt-8">
+                <div className="flex font-semibold justify-between py-6 text-sm uppercase">
                   <span>Total cost</span>
-                  <span>$600</span>
+                  <span className="text-green-500 font-bold">{`$ ${calculateCartSum}`}</span>
                 </div>
-                <button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
+                <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
                   Checkout
                 </button>
               </div>

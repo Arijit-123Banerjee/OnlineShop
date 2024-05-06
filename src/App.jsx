@@ -10,6 +10,7 @@ import { SHOES_DATA } from "../src/DATA";
 import Details from "./Pages/Details";
 import CartPage from "./Pages/CartPage";
 import CheckOutFrom from "./Pages/CheckOutFrom";
+import Payment from "./Pages/Payment";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       { path: "/:id", element: <Details /> },
       { path: "/cart", element: <CartPage /> },
       { path: "/checkout", element: <CheckOutFrom /> },
+      { path: "/payment", element: <Payment /> },
     ],
   },
 ]);

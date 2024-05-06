@@ -34,6 +34,7 @@ const App = () => {
   const [cartCount, setCartCount] = useState(0);
   const [cartItems, setCartItems] = useState([]);
   const [calculateCartSum, setCalculateSum] = useState(0);
+  const [theme, setTheme] = useState(false);
 
   const contextValue = {
     dataitem: data,
@@ -43,6 +44,8 @@ const App = () => {
     setCartItems: setCartItems,
     calculateCartSum: calculateCartSum,
     setCalculateSum: setCalculateSum,
+    theme: theme,
+    setTheme: setTheme,
   };
 
   return (

@@ -13,6 +13,7 @@ const Header = () => {
   const handleOpenMenu = () => {
     setOpenMenu(!openMenu);
   };
+
   return (
     <>
       <nav className="bg-white border-gray-200 py-2.5 max-md: pl-4 ">
@@ -32,12 +33,15 @@ const Header = () => {
               </div>
             </NavLink>
             <Link to={"/login"}>
-              <button className="p-2 px-6 bg-[#02bcec] rounded-full text-white">
+              <button className="p-2 px-6 bg-[#02bcec] rounded-full text-white max-md:order-3">
                 Log in
               </button>
             </Link>
 
-            <button className="hidden max-md:block" onClick={handleOpenMenu}>
+            <button
+              className="hidden max-md:block max-md:order-2"
+              onClick={handleOpenMenu}
+            >
               <Hamburger size={25} />
             </button>
           </div>

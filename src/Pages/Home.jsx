@@ -5,12 +5,18 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import Crousel from "../Components/Crousel";
 import AirProX4 from "../Components/AirProX4";
+import { motion } from "framer-motion";
 
 const Home = () => {
   return (
     <>
-      <div className="flex flex-col justify-center  ">
-        <div className="relative flex justify-center items-center">
+      <div className="flex flex-col justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="relative flex justify-center items-center"
+        >
           <h1 className="text-white z-10 absolute top-20 text-[9rem] max-md:text-7xl font-bold drop-shadow-lg text-shadow-blue">
             AIRPRO X3
           </h1>
@@ -22,8 +28,17 @@ const Home = () => {
               backgroundPosition: "center",
             }}
           />
-          <img src={shoe} alt="Shoe" className="z-10" />
-        </div>
+          <motion.img
+            src={shoe}
+            alt="Shoe"
+            className="z-10"
+            initial={{ y: 0 }}
+            animate={{
+              y: [0, -20, 0],
+              transition: { duration: 4, repeat: Infinity },
+            }}
+          />
+        </motion.div>
         <NavLink
           to={"/shop"}
           className="z-10 shadow-2xl shadow-gray-600 p-3  w-60 rounded-full self-center flex justify-center items-center gap-2 hover:bg-stone-700 duration-300 hover:text-white max-md:mb-10 mb-10 "
@@ -36,7 +51,7 @@ const Home = () => {
       </div>
 
       {/* Shoes Section Crousel */}
-      <section className="h-screen flex items-center mt-32 flex-col  ">
+      <section className="h-screen flex items-center mt-32 flex-col">
         <div className="gap-3">
           <h1 className="text-8xl font-bold font-work-sans text-stone-700 max-md:text-4xl">
             UNBELIEVABLE
@@ -48,7 +63,7 @@ const Home = () => {
         <Crousel />
       </section>
 
-      <section className=" bg-gray-200 mt-24">
+      <section className="bg-gray-200 mt-24">
         <AirProX4 />
       </section>
     </>

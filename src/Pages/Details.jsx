@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { shoesContext } from "../Context/ShoeContext";
 import AddTocartToster from "../Components/AddTocartToster";
+import { motion } from "framer-motion";
 
 const Details = () => {
   const { dataitem } = useContext(shoesContext);
@@ -28,33 +29,50 @@ const Details = () => {
   };
 
   return (
-    <div className=" bg-gray-200 flex justify-center">
-      {isAdded && <AddTocartToster isAdded={isAdded} setIsAdded={setIsAdded} />}
-      <div className="w-[80%] min-h-[80vh] max-md:w-full bg-white mt-10 rounded-lg flex items-center max-lg:flex-col pb-5 mb-10 ">
-        <div className="overflow-hidden">
-          <img src={image} alt="Shoe" />
-        </div>
-        <div className="font-work-sans space-y-2 z-10 max-md:pl-4  ">
-          <p className="text-blue-500">Running Shoes</p>
-          <h1 className="text-5xl font-bold max-md:text-4xl">{name}</h1>
-          <p className="w-80 max-md:text-sm max-md:w-72 ">{description}</p>
-          <p className="text-xl text-green-500 font-bold">
-            {`$ ${price}`}
-            <span className="text-gray-500 font-normal text-lg">
-              + Free Shipping
-            </span>
-          </p>
+    <motion.div
+      initial={{ opacity: 0, y: -100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <div className=" bg-gray-200 flex justify-center">
+        {isAdded && (
+          <AddTocartToster isAdded={isAdded} setIsAdded={setIsAdded} />
+        )}
+        <div className="w-[80%] min-h-[80vh] max-md:w-full bg-white mt-10 rounded-lg flex items-center max-lg:flex-col pb-5 mb-10 ">
+          <div className="overflow-hidden">
+            <motion.img
+              src={image}
+              alt="Shoe"
+              className="z-10"
+              initial={{ y: 0 }}
+              animate={{
+                y: [0, -20, 0],
+                transition: { duration: 4, repeat: Infinity },
+              }}
+            />
+          </div>
+          <div className="font-work-sans space-y-2 z-10 max-md:pl-4  ">
+            <p className="text-blue-500">Running Shoes</p>
+            <h1 className="text-5xl font-bold max-md:text-4xl">{name}</h1>
+            <p className="w-80 max-md:text-sm max-md:w-72 ">{description}</p>
+            <p className="text-xl text-green-500 font-bold">
+              {`$ ${price}`}
+              <span className="text-gray-500 font-normal text-lg">
+                + Free Shipping
+              </span>
+            </p>
 
-          <button
-            className="p-2 border-2 w-full max-md:w-[70%] hover:bg-gray-300 duration-150"
-            onClick={handleAddToCart}
-            disabled={alreadyAdded}
-          >
-            Add to Cart
-          </button>
+            <button
+              className="p-2 border-2 w-full max-md:w-[70%] hover:bg-gray-300 duration-150"
+              onClick={handleAddToCart}
+              disabled={alreadyAdded}
+            >
+              Add to Cart
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

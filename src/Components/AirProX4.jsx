@@ -1,11 +1,21 @@
 import React from "react";
 import airProX3IMG from "../assets/four.png";
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const AirProX4 = () => {
   return (
     <div className="flex items-center justify-center max-md:flex-col min-h-screen mb-20 overflow-hidden">
-      <img src={airProX3IMG} />
+      <motion.img
+        src={airProX3IMG}
+        alt="Shoe"
+        className="z-10"
+        initial={{ y: 0 }}
+        animate={{
+          y: [0, -20, 0],
+          transition: { duration: 4, repeat: Infinity },
+        }}
+      />
       <div className="font-work-sans text-gray-800 space-y-4 max-md:text-center max-md:flex max-md:flex-col">
         <h2 className="text-3xl font-bold max-md:text-2xl">
           {" "}

@@ -1,17 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth, provider } from "../Auth/config";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithRedirect, getRedirectResult } from "firebase/auth";
 import { Link } from "react-router-dom";
 import RightIMG from "../assets/right.png";
 
 const LoginPage = () => {
   const [userEmail, setUserEmail] = useState("");
 
+  useEffect(() => {
+    const handleRedirectResult = async () => {
+      try {
+        const result = await getRedirectResult(auth);
+        if (result.user) {
+          setUserEmail(result.user.email);
+        }
+      } catch (error) {
+        console.error("Error handling redirect:", error);
+      }
+    };
+
+    handleRedirectResult();
+  }, []);
+
   const handleLogin = () => {
-    signInWithPopup(auth, provider)
-      .then((data) => {
-        setUserEmail(data.user.email);
-        // localStorage.setItem("email", data.user.email);
+    signInWithRedirect(auth, provider)
+      .then(() => {
+        // No need to handle anything here as the redirect result will be handled by useEffect
       })
       .catch((error) => {
         console.error("Error signing in:", error);

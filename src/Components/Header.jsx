@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LOGO from "../assets/logo.png";
 import { PiShoppingCartDuotone } from "react-icons/pi";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Fade as Hamburger } from "hamburger-react";
 import { useContext } from "react";
 import { shoesContext } from "../Context/ShoeContext";
@@ -31,6 +31,11 @@ const Header = () => {
                 {cartCount}
               </div>
             </NavLink>
+            <Link to={"/login"}>
+              <button className="p-2 px-6 bg-[#02bcec] rounded-full text-white">
+                Log in
+              </button>
+            </Link>
 
             <button className="hidden max-md:block" onClick={handleOpenMenu}>
               <Hamburger size={25} />

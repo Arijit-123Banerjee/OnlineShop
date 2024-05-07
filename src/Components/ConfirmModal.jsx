@@ -6,7 +6,7 @@ const ConfirmModal = () => {
   return (
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
       <div className=" absolute inset-0 bg-black bg-opacity-80"></div>
-      <div className=" bg-green-900 rounded-lg p-8 z-50 flex max-md:h-screen    flex-col justify-center items-center space-y-4 font-work-sans text-white">
+      <div className=" bg-green-900 rounded-lg p-8 z-50 flex max-md:h-screen max-md:w-full    flex-col justify-center items-center space-y-4 font-work-sans text-white">
         <div className="size-16 max-md:size-24  rounded-full">
           <img src={RightIMG} alt="" />
         </div>

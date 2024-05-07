@@ -26,7 +26,7 @@ const CheckOutFrom = () => {
                   <div class="flex w-full flex-col px-4 py-4">
                     <span class="font-semibold">{item.name}</span>
                     <span class="float-right text-gray-400">{item.brand}</span>
-                    <p class="text-lg font-bold">{`$ ${item.price}`}</p>
+                    <p class="text-lg font-bold">{`$${item.price}`}</p>
                   </div>
                 </div>
               );
@@ -79,7 +79,7 @@ const CheckOutFrom = () => {
                 id="card-holder"
                 name="card-holder"
                 class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                placeholder="Your full name here"
+                placeholder="Your Phone Number"
               />
               <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                 <svg
@@ -133,7 +133,7 @@ const CheckOutFrom = () => {
             <div class="mt-6 border-t border-b py-2"></div>
             <div class="mt-6 flex items-center justify-between">
               <p class="text-sm font-medium text-gray-900">Total</p>
-              <p class="text-2xl font-semibold text-gray-900">{`$ ${calculateCartSum}`}</p>
+              <p class="text-2xl font-semibold text-gray-900">{`$${calculateCartSum}`}</p>
             </div>
           </div>
           <Link to={"/payment"}>

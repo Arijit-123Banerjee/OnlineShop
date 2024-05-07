@@ -40,7 +40,7 @@ const CartPage = () => {
 
   useEffect(() => {
     calculateSum();
-  }, [cartItems, selectedValue]); // Include selectedValue in the dependency array
+  }, [cartItems, selectedValue]);
 
   return (
     <>
@@ -136,7 +136,7 @@ const CartPage = () => {
               <div className="border-t mt-8">
                 <div className="flex font-semibold justify-between py-6 text-sm uppercase">
                   <span>Total cost</span>
-                  <span className="text-green-500 font-bold">{`$ ${calculateCartSum}`}</span>
+                  <span className="text-green-500 font-bold">{`$${calculateCartSum}`}</span>
                 </div>
                 <Link to={"/checkout"}>
                   <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
